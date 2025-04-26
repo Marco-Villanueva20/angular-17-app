@@ -1,1 +1,24 @@
-<p>user works!</p>
+<section>
+    @if (isLoggedIn){
+        <p>Bienvenido, {{username}}</p>
+        <img 
+        (click)="greet()"
+        src="https://th.bing.com/th/id/OIP.09dLWZb0RQGIQDCv9TN1MgHaEK?rs=1&pid=ImgDetMain" 
+        alt="photo">
+    }@else {
+        <p>Por favor inicia sesión</p>
+    }
+
+    <!-- Botón para cambiar el estado de sesión -->
+    <button (click)="isLoggedIn = !isLoggedIn">Long In</button>
+
+    <!-- Se muestra el componente app-games -->
+    <app-games 
+    (addFavoriteEvent)="getFavorite($event)"
+    username="{{username}}"></app-games>
+
+    @if(favGame != ""){
+        <p>Tu juego favorito es {{favGame}}</p>
+    }
+</section>
+
